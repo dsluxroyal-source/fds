@@ -1,0 +1,30 @@
+import re
+def summarize_text():
+    text = input("Enter your text:\n\n")
+    if not text.strip():
+        print("Text cannot be empty.")
+        return
+    try:
+        sentence_count = int(input("How many sentences in the summary? "))
+        sentences = re.split(r'(?<=[.!?])\s+', text)
+        if sentence_count >= len(sentences):
+            print("\nSummary:")
+            print(text)
+            return
+        summary = " ".join(sentences[:sentence_count])
+        print("\nSummary:")
+        print(summary)
+    except ValueError:
+        print("Please enter a valid number.")
+while True:
+    print("\n=== BASIC TEXT SUMMARIZER ===")
+    print("1. Summarize Text")
+    print("2. Exit")
+    choice = input("Choose an option: ")
+    if choice == "1":
+        summarize_text()
+    elif choice == "2":
+        print("Goodbye!")
+        break
+    else:
+        print("Invalid option. Try again.")
